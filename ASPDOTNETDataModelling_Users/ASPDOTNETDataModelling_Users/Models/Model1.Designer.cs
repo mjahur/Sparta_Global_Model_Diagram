@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Tech-W96a\Engineering26\Week10\Day1\ASPDOTNETDataModelling_Users\ASPDOTNETDataModelling_Users\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Tech-W96a\Engineering26\week10\Day1\Sparta_Global_Model_Diagram\ASPDOTNETDataModelling_Users\ASPDOTNETDataModelling_Users\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

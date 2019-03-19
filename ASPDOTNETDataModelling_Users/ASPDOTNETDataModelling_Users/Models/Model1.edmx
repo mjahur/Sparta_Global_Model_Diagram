@@ -107,7 +107,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" Nullable="false" />
           <Property Name="password" Type="String" Nullable="false" />
           <NavigationProperty Name="Securities" Relationship="Model1.LogInSecurity" FromRole="LogIn" ToRole="Security" />
           <NavigationProperty Name="Contact" Relationship="Model1.ContactLogIn" FromRole="LogIn" ToRole="Contact" />
@@ -120,6 +119,13 @@
           <NavigationProperty Name="Sidekicks" Relationship="Model1.LogInSidekick" FromRole="LogIn" ToRole="Sidekick" />
           <Property Name="securityID" Type="String" Nullable="false" />
           <Property Name="contactID" Type="String" Nullable="false" />
+          <Property Name="friendlistID" Type="String" Nullable="false" />
+          <Property Name="descriptionID" Type="String" Nullable="false" />
+          <Property Name="aoID" Type="String" Nullable="false" />
+          <Property Name="motherID" Type="String" Nullable="false" />
+          <Property Name="fatherID" Type="String" Nullable="false" />
+          <Property Name="groupID" Type="String" Nullable="false" />
+          <Property Name="sidekickID" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Security">
           <Key>

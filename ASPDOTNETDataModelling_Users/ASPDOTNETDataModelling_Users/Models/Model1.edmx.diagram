@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="Model1.Address" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model1.Contact" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="Model1.LogIn" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Model1.Security" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model1.Security" Width="1.5" PointX="3" PointY="4.5" />
         <AssociationConnector Association="Model1.AddressContact" />
         <EntityTypeShape EntityType="Model1.Friends" Width="1.5" PointX="5.375" PointY="0.75" />
         <AssociationConnector Association="Model1.LogInSecurity" />
