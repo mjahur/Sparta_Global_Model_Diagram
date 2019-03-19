@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Model1.Address" />
+          <EntitySet Name="Contacts" EntityType="Model1.Contact" />
+          <EntitySet Name="LogIns" EntityType="Model1.LogIn" />
+          <EntitySet Name="Securities" EntityType="Model1.Security" />
+          <AssociationSet Name="AddressContact" Association="Model1.AddressContact">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <EntitySet Name="Friends" EntityType="Model1.Friends" />
+          <AssociationSet Name="LogInSecurity" Association="Model1.LogInSecurity">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="Security" EntitySet="Securities" />
+          </AssociationSet>
+          <AssociationSet Name="ContactLogIn" Association="Model1.ContactLogIn">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="LogIn" EntitySet="LogIns" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="Model1.Admin" />
+          <EntitySet Name="AddociatedOrganisations" EntityType="Model1.AddociatedOrganisation" />
+          <EntitySet Name="Desciptions" EntityType="Model1.Desciption" />
+          <EntitySet Name="Fathers" EntityType="Model1.Father" />
+          <EntitySet Name="Mothers" EntityType="Model1.Mother" />
+          <EntitySet Name="Nemesis" EntityType="Model1.Nemesis" />
+          <EntitySet Name="Sidekicks" EntityType="Model1.Sidekick" />
+          <EntitySet Name="Universes" EntityType="Model1.Universe" />
+          <AssociationSet Name="LogInFriends" Association="Model1.LogInFriends">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="Friends" EntitySet="Friends" />
+          </AssociationSet>
+          <AssociationSet Name="LogInDesciption" Association="Model1.LogInDesciption">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="Desciption" EntitySet="Desciptions" />
+          </AssociationSet>
+          <AssociationSet Name="LogInAddociatedOrganisation" Association="Model1.LogInAddociatedOrganisation">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="AddociatedOrganisation" EntitySet="AddociatedOrganisations" />
+          </AssociationSet>
+          <AssociationSet Name="LogInMother" Association="Model1.LogInMother">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="Mother" EntitySet="Mothers" />
+          </AssociationSet>
+          <AssociationSet Name="FatherLogIn" Association="Model1.FatherLogIn">
+            <End Role="Father" EntitySet="Fathers" />
+            <End Role="LogIn" EntitySet="LogIns" />
+          </AssociationSet>
+          <EntitySet Name="Groups" EntityType="Model1.Group" />
+          <AssociationSet Name="LogInGroup" Association="Model1.LogInGroup">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="LogInSidekick" Association="Model1.LogInSidekick">
+            <End Role="LogIn" EntitySet="LogIns" />
+            <End Role="Sidekick" EntitySet="Sidekicks" />
+          </AssociationSet>
+          <AssociationSet Name="UniverseDesciption" Association="Model1.UniverseDesciption">
+            <End Role="Universe" EntitySet="Universes" />
+            <End Role="Desciption" EntitySet="Desciptions" />
+          </AssociationSet>
+          <AssociationSet Name="AddociatedOrganisationGroup" Association="Model1.AddociatedOrganisationGroup">
+            <End Role="AddociatedOrganisation" EntitySet="AddociatedOrganisations" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="UniverseAddociatedOrganisation" Association="Model1.UniverseAddociatedOrganisation">
+            <End Role="Universe" EntitySet="Universes" />
+            <End Role="AddociatedOrganisation" EntitySet="AddociatedOrganisations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="line1" Type="String" Nullable="false" />
+          <Property Name="city" Type="String" Nullable="false" />
+          <Property Name="postcode" Type="String" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="Model1.AddressContact" FromRole="Address" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="mobile" Type="String" Nullable="false" />
+          <Property Name="telephone" Type="String" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Model1.AddressContact" FromRole="Contact" ToRole="Address" />
+          <NavigationProperty Name="LogIns" Relationship="Model1.ContactLogIn" FromRole="Contact" ToRole="LogIn" />
+        </EntityType>
+        <EntityType Name="LogIn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Securities" Relationship="Model1.LogInSecurity" FromRole="LogIn" ToRole="Security" />
+          <NavigationProperty Name="Contact" Relationship="Model1.ContactLogIn" FromRole="LogIn" ToRole="Contact" />
+          <NavigationProperty Name="Friends" Relationship="Model1.LogInFriends" FromRole="LogIn" ToRole="Friends" />
+          <NavigationProperty Name="Desciptions" Relationship="Model1.LogInDesciption" FromRole="LogIn" ToRole="Desciption" />
+          <NavigationProperty Name="AddociatedOrganisations" Relationship="Model1.LogInAddociatedOrganisation" FromRole="LogIn" ToRole="AddociatedOrganisation" />
+          <NavigationProperty Name="Mothers" Relationship="Model1.LogInMother" FromRole="LogIn" ToRole="Mother" />
+          <NavigationProperty Name="Father" Relationship="Model1.FatherLogIn" FromRole="LogIn" ToRole="Father" />
+          <NavigationProperty Name="Groups" Relationship="Model1.LogInGroup" FromRole="LogIn" ToRole="Group" />
+          <NavigationProperty Name="Sidekicks" Relationship="Model1.LogInSidekick" FromRole="LogIn" ToRole="Sidekick" />
+          <Property Name="securityID" Type="String" Nullable="false" />
+          <Property Name="contactID" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Security">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="question" Type="String" Nullable="false" />
+          <Property Name="answer" Type="String" Nullable="false" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInSecurity" FromRole="Security" ToRole="LogIn" />
+        </EntityType>
+        <Association Name="AddressContact">
+          <End Type="Model1.Address" Role="Address" Multiplicity="1" />
+          <End Type="Model1.Contact" Role="Contact" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Friends">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="friendlist" Type="String" Nullable="false" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInFriends" FromRole="Friends" ToRole="LogIn" />
+          <Property Name="friendlistID" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="LogInSecurity">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+          <End Type="Model1.Security" Role="Security" Multiplicity="*" />
+        </Association>
+        <Association Name="ContactLogIn">
+          <End Type="Model1.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" Nullable="false" />
+          <Property Name="lastName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AddociatedOrganisation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="GoodOrEvil" Type="String" Nullable="false" />
+          <Property Name="Purpose" Type="String" Nullable="false" />
+          <Property Name="universe" Type="String" Nullable="false" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInAddociatedOrganisation" FromRole="AddociatedOrganisation" ToRole="LogIn" />
+          <NavigationProperty Name="Groups" Relationship="Model1.AddociatedOrganisationGroup" FromRole="AddociatedOrganisation" ToRole="Group" />
+          <NavigationProperty Name="Universe" Relationship="Model1.UniverseAddociatedOrganisation" FromRole="AddociatedOrganisation" ToRole="Universe" />
+        </EntityType>
+        <EntityType Name="Desciption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hairColour" Type="String" Nullable="false" />
+          <Property Name="eyeColour" Type="String" Nullable="false" />
+          <Property Name="height" Type="String" Nullable="false" />
+          <Property Name="background" Type="String" Nullable="false" />
+          <Property Name="powers" Type="String" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="DescriptionID" Type="String" Nullable="false" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInDesciption" FromRole="Desciption" ToRole="LogIn" />
+          <NavigationProperty Name="Universe" Relationship="Model1.UniverseDesciption" FromRole="Desciption" ToRole="Universe" />
+          <Property Name="universe" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Father">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="LogIns" Relationship="Model1.FatherLogIn" FromRole="Father" ToRole="LogIn" />
+          <Property Name="fatherID" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mother">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInMother" FromRole="Mother" ToRole="LogIn" />
+        </EntityType>
+        <EntityType Name="Nemesis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reasonForEnemity" Type="String" Nullable="false" />
+          <Property Name="NemesisID" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sidekick">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sidekickID" Type="String" Nullable="false" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInSidekick" FromRole="Sidekick" ToRole="LogIn" />
+        </EntityType>
+        <EntityType Name="Universe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniverseName" Type="String" Nullable="false" />
+          <Property Name="universeID" Type="String" Nullable="false" />
+          <NavigationProperty Name="Desciptions" Relationship="Model1.UniverseDesciption" FromRole="Universe" ToRole="Desciption" />
+          <NavigationProperty Name="AddociatedOrganisations" Relationship="Model1.UniverseAddociatedOrganisation" FromRole="Universe" ToRole="AddociatedOrganisation" />
+        </EntityType>
+        <Association Name="LogInFriends">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+          <End Type="Model1.Friends" Role="Friends" Multiplicity="1" />
+        </Association>
+        <Association Name="LogInDesciption">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+          <End Type="Model1.Desciption" Role="Desciption" Multiplicity="1" />
+        </Association>
+        <Association Name="LogInAddociatedOrganisation">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+          <End Type="Model1.AddociatedOrganisation" Role="AddociatedOrganisation" Multiplicity="1" />
+        </Association>
+        <Association Name="LogInMother">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="*" />
+          <End Type="Model1.Mother" Role="Mother" Multiplicity="1" />
+        </Association>
+        <Association Name="FatherLogIn">
+          <End Type="Model1.Father" Role="Father" Multiplicity="1" />
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Organisation" Type="String" Nullable="false" />
+          <Property Name="groupName" Type="String" Nullable="false" />
+          <Property Name="members" Type="String" Nullable="false" />
+          <Property Name="groupID" Type="String" Nullable="false" />
+          <NavigationProperty Name="LogIn" Relationship="Model1.LogInGroup" FromRole="Group" ToRole="LogIn" />
+          <NavigationProperty Name="AddociatedOrganisation" Relationship="Model1.AddociatedOrganisationGroup" FromRole="Group" ToRole="AddociatedOrganisation" />
+        </EntityType>
+        <Association Name="LogInGroup">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+          <End Type="Model1.Group" Role="Group" Multiplicity="*" />
+        </Association>
+        <Association Name="LogInSidekick">
+          <End Type="Model1.LogIn" Role="LogIn" Multiplicity="1" />
+          <End Type="Model1.Sidekick" Role="Sidekick" Multiplicity="1" />
+        </Association>
+        <Association Name="UniverseDesciption">
+          <End Type="Model1.Universe" Role="Universe" Multiplicity="1" />
+          <End Type="Model1.Desciption" Role="Desciption" Multiplicity="*" />
+        </Association>
+        <Association Name="AddociatedOrganisationGroup">
+          <End Type="Model1.AddociatedOrganisation" Role="AddociatedOrganisation" Multiplicity="1" />
+          <End Type="Model1.Group" Role="Group" Multiplicity="*" />
+        </Association>
+        <Association Name="UniverseAddociatedOrganisation">
+          <End Type="Model1.Universe" Role="Universe" Multiplicity="1" />
+          <End Type="Model1.AddociatedOrganisation" Role="AddociatedOrganisation" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
